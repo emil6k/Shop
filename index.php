@@ -106,9 +106,17 @@
         #logopng {
           width: 100px;
 
+        }
+
+        #prodimg{
+
+            width: 50px;
 
 
         }
+
+
+
 
 
     </style>
@@ -117,7 +125,7 @@
     <header>
     <h1>RetroSounds</h1>
       <div class="Überschrift">
-      <img src="logo.png" alt="Schallplatte 1" id="logopng">
+      <img src="bilder\logo.PNG" alt="Schallplatte 1" id="logopng" >
       </div>
 
     </header>
@@ -132,16 +140,31 @@
     
     <div class="container">
         <section id="schallplatten">
+
             <h2>Schallplatten</h2>
             <div class="product-grid">
-                <div class="product">
-                    <img src="schallplattentransparent.jpg" alt="Schallplatte 1">
+            <div class="product">
+                    <img src="bilder\schallplattentransparent.jpg" alt="Schallplatte 1" class="prodimg">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der Schallplatte.</p>
+                    <div class="price">€19,99</div>
+                    <button>In den Warenkorb</button>
+
+                </div>
+                <div class="product2">
+                    <img src="bilder\schallplattentransparentrot.jpg" alt="Schallplatte 1" class="prodimg">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der Schallplatte.</p>
                     <div class="price">€19,99</div>
                     <button>In den Warenkorb</button>
                 </div>
             </div>
+
+
+    
+      
+
+
         </section>
         
         <section id="cds">
