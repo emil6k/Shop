@@ -151,7 +151,7 @@
                     <button>In den Warenkorb</button>
 
                 </div>
-                <div class="product2">
+                <div class="product">
                     <img src="bilder\schallplattentransparentrot.jpg" alt="Schallplatte 1" class="prodimg">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der Schallplatte.</p>
