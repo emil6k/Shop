@@ -115,6 +115,15 @@
 
         }
 
+        .product:hover {
+            transform: scale(1.05);
+            transition: transform 0.4s ease;
+
+
+
+
+        }
+
 
 
 
@@ -139,33 +148,44 @@
     </nav>
     
     <div class="container">
-        <section id="schallplatten">
+    <section id="schallplatten">
+    <h2>Schallplatten</h2>
+    <div class="product-grid">
+        <div class="product">
+            <img src="bilder\schallplattentransparent.jpg" alt="Schallplatte 1" class="prodimg">
+            <h3>Albumtitel - Künstler</h3>
+            <p>Beschreibung der Schallplatte.</p>
+            <div class="price">€19,99</div>
+            <button>In den Warenkorb</button>
+        </div>
+        <div class="product">
+            <img src="bilder\schallplattentransparentrot.jpg" alt="Schallplatte 2" class="prodimg">
+            <h3>Albumtitel - Künstler</h3>
+            <p>Beschreibung der Schallplatte.</p>
+            <div class="price">€19,99</div>
+            <button>In den Warenkorb</button>
+        </div>
+        <div class="product">
+            <img src="bilder\schallplattentransparentblau.jpg" alt="Schallplatte 3" class="prodimg">
+            <h3>Albumtitel - Künstler</h3>
+            <p>Beschreibung der Schallplatte.</p>
+            <div class="price">€19,99</div>
+            <button>In den Warenkorb</button>
+        </div>
+        <div class="product">
+            <img src="bilder\schallplattentransparentgrün.jpg" alt="Schallplatte 4" class="prodimg">
+            <h3>Albumtitel - Künstler</h3>
+            <p>Beschreibung der Schallplatte.</p>
+            <div class="price">€19,99</div>
+            <button>In den Warenkorb</button>
+        </div>
+    </div>
+</section>
 
-            <h2>Schallplatten</h2>
-            <div class="product-grid">
-            <div class="product">
-                    <img src="bilder\schallplattentransparent.jpg" alt="Schallplatte 1" class="prodimg">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der Schallplatte.</p>
-                    <div class="price">€19,99</div>
-                    <button>In den Warenkorb</button>
-
-                </div>
-                <div class="product">
-                    <img src="bilder\schallplattentransparentrot.jpg" alt="Schallplatte 1" class="prodimg">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der Schallplatte.</p>
-                    <div class="price">€19,99</div>
-                    <button>In den Warenkorb</button>
-                </div>
-            </div>
-
-
-    
       
 
 
-        </section>
+        
         
         <section id="cds">
             <h2>CDs</h2>
