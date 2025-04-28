@@ -182,16 +182,32 @@
     </div>
 </section>
 
-      
-
-
-        
-        
-        <section id="cds">
+      <section id="cds">
             <h2>CDs</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="cd1.jpg" alt="CD 1">
+                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button>In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button>In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button>In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\cdtransparent.png" alt="CD 1">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der CD.</p>
                     <div class="price">€14,99</div>
@@ -204,13 +220,35 @@
             <h2>Instrumente</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="gitarre.jpg" alt="Gitarre">
-                    <h3>Akustikgitarre</h3>
+                    <img src="bilder\flötetransparent.png" alt="Gitarre">
+                    <h3>Flöte</h3>
+                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <div class="price">€199,99</div>
+                    <button>In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\—Pngtree—violin exquisite violin playing entertainment_6926571.png" alt="Gitarre">
+                    <h3>Geige</h3>
+                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <div class="price">€199,99</div>
+                    <button>In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\gitarretransparent.jpeg" alt="Gitarre">
+                    <h3>Gittarre</h3>
+                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <div class="price">€199,99</div>
+                    <button>In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\—Pngtree—beth_7204229.png" alt="Gitarre">
+                    <h3>Bass</h3>
                     <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
                     <button>In den Warenkorb</button>
                 </div>
             </div>
+
         </section>
     </div>
     
