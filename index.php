@@ -21,7 +21,7 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: white;
+            background-color: rgba(150, 127, 127, 0.1);
             padding: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: sticky;
@@ -63,7 +63,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             padding: 15px;
-            
         }
         .product img {
             width: 100%;
@@ -94,164 +93,159 @@
         .product button:hover {
             background-color: #e03e00;
         }
-        .Überschrift{
-          margin-right: 1400px;
-          margin-top: -100px;
-         
-
-
-
+        .Überschrift {
+            margin-right: 1400px;
+            margin-top: -100px;
         }
-
         #logopng {
-          width: 100px;
-
+            width: 100px;
         }
-
-        #prodimg{
-
-            width: 50px;
-
-
-        }
-
         .product:hover {
             transform: scale(1.05);
             transition: transform 0.4s ease;
-
-
-
-
         }
-
-
-
-
-
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            margin-top: 40px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
     </style>
+
+    <!-- JavaScript für die Weiterleitung -->
+    <script>
+        function zumWarenkorb() {
+            window.location.href = "warenkorb.php";
+        }
+    </script>s
 </head>
 <body>
     <header>
-    <h1>RetroSounds</h1>
-      <div class="Überschrift">
-      <img src="bilder\logo.PNG" alt="Schallplatte 1" id="logopng" >
-      </div>
-
+        <h1>RetroSounds</h1>
+        <div class="Überschrift">
+            
+            <img src="bilder/logo.PNG" alt="Schallplatte 1" id="logopng">
+        </div>
     </header>
+
     <nav>
         <ul>
             <li><a href="#schallplatten">Schallplatten</a></li>
             <li><a href="#cds">CDs</a></li>
             <li><a href="#instrumente">Instrumente</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="warenkorb.php">
+            <img src="bilder/shopping.png" alt="Warenkorb" style="width: 20px; vertical-align: middle; margin-right: 5px;"> Warenkorb
+        </a></li>
+
         </ul>
     </nav>
-    
-    <div class="container">
-    <section id="schallplatten">
-    <h2>Schallplatten</h2>
-    <div class="product-grid">
-        <div class="product">
-            <img src="bilder\schallplattentransparent.jpg" alt="Schallplatte 1" class="prodimg">
-            <h3>Albumtitel - Künstler</h3>
-            <p>Beschreibung der Schallplatte.</p>
-            <div class="price">€19,99</div>
-            <button>In den Warenkorb</button>
-        </div>
-        <div class="product">
-            <img src="bilder\schallplattentransparentrot.jpg" alt="Schallplatte 2" class="prodimg">
-            <h3>Albumtitel - Künstler</h3>
-            <p>Beschreibung der Schallplatte.</p>
-            <div class="price">€19,99</div>
-            <button>In den Warenkorb</button>
-        </div>
-        <div class="product">
-            <img src="bilder\schallplattentransparentblau.jpg" alt="Schallplatte 3" class="prodimg">
-            <h3>Albumtitel - Künstler</h3>
-            <p>Beschreibung der Schallplatte.</p>
-            <div class="price">€19,99</div>
-            <button>In den Warenkorb</button>
-        </div>
-        <div class="product">
-            <img src="bilder\schallplattentransparentgrün.jpg" alt="Schallplatte 4" class="prodimg">
-            <h3>Albumtitel - Künstler</h3>
-            <p>Beschreibung der Schallplatte.</p>
-            <div class="price">€19,99</div>
-            <button>In den Warenkorb</button>
-        </div>
-    </div>
-</section>
 
-      <section id="cds">
-            <h2>CDs</h2>
+    <div class="container">
+        <section id="schallplatten">
+            <h2>Schallplatten</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <img src="bilder/schallplattentransparent.jpg" alt="Schallplatte 1" class="prodimg">
                     <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
-                    <div class="price">€14,99</div>
-                    <button>In den Warenkorb</button>
+                    <p>Beschreibung der Schallplatte.</p>
+                    <div class="price">€19,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <img src="bilder/schallplattentransparentrot.jpg" alt="Schallplatte 2" class="prodimg">
                     <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
-                    <div class="price">€14,99</div>
-                    <button>In den Warenkorb</button>
+                    <p>Beschreibung der Schallplatte.</p>
+                    <div class="price">€19,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <img src="bilder/schallplattentransparentblau.jpg" alt="Schallplatte 3" class="prodimg">
                     <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
-                    <div class="price">€14,99</div>
-                    <button>In den Warenkorb</button>
+                    <p>Beschreibung der Schallplatte.</p>
+                    <div class="price">€19,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder\cdtransparent.png" alt="CD 1">
+                    <img src="bilder/schallplattentransparentgrün.jpg" alt="Schallplatte 4" class="prodimg">
                     <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
-                    <div class="price">€14,99</div>
-                    <button>In den Warenkorb</button>
+                    <p>Beschreibung der Schallplatte.</p>
+                    <div class="price">€19,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
             </div>
         </section>
-        
+
+        <section id="cds">
+            <h2>CDs</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="bilder/cdtransparent.png" alt="CD 1">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder/cdtransparent.png" alt="CD 2">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder/cdtransparent.png" alt="CD 3">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder/cdtransparent.png" alt="CD 4">
+                    <h3>Albumtitel - Künstler</h3>
+                    <p>Beschreibung der CD.</p>
+                    <div class="price">€14,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+            </div>
+        </section>
+
         <section id="instrumente">
             <h2>Instrumente</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="bilder\flötetransparent.png" alt="Gitarre">
+                    <img src="bilder/flötetransparent.png" alt="Flöte">
                     <h3>Flöte</h3>
-                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <p>Hochwertige Flöte für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
-                    <button>In den Warenkorb</button>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder\—Pngtree—violin exquisite violin playing entertainment_6926571.png" alt="Gitarre">
+                    <img src="bilder/—Pngtree—violin exquisite violin playing entertainment_6926571.png" alt="Geige">
                     <h3>Geige</h3>
-                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <p>Hochwertige Geige für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
-                    <button>In den Warenkorb</button>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder\gitarretransparent.jpeg" alt="Gitarre">
-                    <h3>Gittarre</h3>
-                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <img src="bilder/gitarretransparent.jpeg" alt="Gitarre">
+                    <h3>Gitarre</h3>
+                    <p>Hochwertige Gitarre für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
-                    <button>In den Warenkorb</button>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder\—Pngtree—beth_7204229.png" alt="Gitarre">
+                    <img src="bilder/—Pngtree—beth_7204229.png" alt="Bass">
                     <h3>Bass</h3>
-                    <p>Hochwertige Akustikgitarre für Einsteiger und Profis.</p>
+                    <p>Hochwertiger Bass für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
-                    <button>In den Warenkorb</button>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
             </div>
-
         </section>
     </div>
-    
+
     <footer>
         <p>&copy; 2025 Musikshop. Alle Rechte vorbehalten.</p>
     </footer>
