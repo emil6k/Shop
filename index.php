@@ -118,7 +118,7 @@
         function zumWarenkorb() {
             window.location.href = "warenkorb.php";
         }
-    </script>s
+    </script>
 </head>
 <body>
     <header>
@@ -240,6 +240,38 @@
                     <h3>Bass</h3>
                     <p>Hochwertiger Bass für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+            </div>
+        </section>
+     <section id="instrumente2">
+            <div class="product-grid">
+                <div class="product">
+                    <img src="bilder/akkordeon.png" alt="Akkordeon">
+                    <h3>Akkordeon</h3>
+                    <p>Hochwertige Flöte für Einsteiger und Profis.</p>
+                    <div class="price">749,49 €</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\schlagzeug.png" alt="Schlagzeug">
+                    <h3>Schlagzeug</h3>
+                    <p>Hochwertige Geige für Einsteiger und Profis.</p>
+                    <div class="price">1.099,00 €</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder\saxophon.png" alt="Saxophon">
+                    <h3>Saxophon</h3>
+                    <p>Hochwertige Gitarre für Einsteiger und Profis.</p>
+                    <div class="price">10.890,00 €</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder/Piano.png" alt="Piano">
+                    <h3>Piano</h3>
+                    <p>Hochwertiger Bass für Einsteiger und Profis.</p>
+                    <div class="price">9.390,00 €</div>
                     <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
             </div>

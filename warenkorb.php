@@ -27,7 +27,7 @@
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #ff4500;
+            background-color:rgb(0, 166, 19);
             color: white;
         }
         tfoot td {
@@ -39,7 +39,7 @@
         }
         .buttons a, .buttons button {
             text-decoration: none;
-            background-color: #ff4500;
+            background-color:rgb(85, 0, 255);
             color: white;
             padding: 10px 20px;
             margin: 5px;
@@ -65,7 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Warenkorb-Einträge kommen hier rein -->
+            <!-- JavaScript befüllt diese Tabelle -->
         </tbody>
         <tfoot>
             <tr>
@@ -93,11 +93,10 @@
                 const zeile = document.createElement("tr");
                 zeile.innerHTML = `
                     <td>${produkt.name}</td>
-                    <td>${produkt.preis} €</td>
+                    <td>${produkt.preis.toFixed(2)} €</td>
                     <td>${produkt.menge}</td>
                 `;
                 tbody.appendChild(zeile);
-
                 gesamt += produkt.preis * produkt.menge;
             });
 
