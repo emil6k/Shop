@@ -82,7 +82,7 @@
             font-size: 16px;
         }
         .product button {
-            background-color: #ff4500;
+            background-color:rgb(3, 50, 105);
             color: white;
             border: none;
             padding: 10px;
@@ -91,7 +91,7 @@
             margin-top: 10px;
         }
         .product button:hover {
-            background-color: #e03e00;
+            background-color:rgb(15, 113, 242);
         }
         .Überschrift {
             margin-right: 1400px;
@@ -113,12 +113,7 @@
         }
     </style>
 
-    <!-- JavaScript für die Weiterleitung -->
-    <script>
-        function zumWarenkorb() {
-            window.location.href = "warenkorb.php";
-        }
-    </script>
+   
 </head>
 <body>
     <header>
@@ -142,35 +137,37 @@
         </ul>
     </nav>
 
+    <audio id="amy-audio">
+    <source src="audio/amywinehouse.mp3" type="audio/mpeg">
+    Dein Browser unterstützt Audio leider nicht.
+    </audio>
+
     <div class="container">
         <section id="schallplatten">
             <h2>Schallplatten</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="bilder/schallplattentransparent.jpg" alt="Schallplatte 1" class="prodimg">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der Schallplatte.</p>
+                    <img src="bilder/AMY.png" alt="Schallplatte 1" class="prodimg" id="amy-audio">
+                    <h3>Amy Winehouse – Back to Black</h3>
+                    <p></p>
+                    <div class="price">€29,99</div>
+                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
+                </div>
+                <div class="product">
+                    <img src="bilder/blondocean.png" alt="Schallplatte 2" class="prodimg">
+                    <h3>blonde - Frank Ocean</h3>
                     <div class="price">€19,99</div>
                     <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder/schallplattentransparentrot.jpg" alt="Schallplatte 2" class="prodimg">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der Schallplatte.</p>
+                    <img src="bilder/KayneWest.png" alt="Schallplatte 3" class="prodimg">
+                    <h3>My Beautiful Dark Twisted Fantasy - Kanya West</h3>
                     <div class="price">€19,99</div>
                     <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
                 <div class="product">
-                    <img src="bilder/schallplattentransparentblau.jpg" alt="Schallplatte 3" class="prodimg">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der Schallplatte.</p>
-                    <div class="price">€19,99</div>
-                    <button onclick="zumWarenkorb()">In den Warenkorb</button>
-                </div>
-                <div class="product">
-                    <img src="bilder/schallplattentransparentgrün.jpg" alt="Schallplatte 4" class="prodimg">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der Schallplatte.</p>
+                    <img src="bilder/PinkFloydAlbum.png" alt="Schallplatte 4" class="prodimg">
+                    <h3>The Dark Side of the Moon - Pink Floyd</h3>
                     <div class="price">€19,99</div>
                     <button onclick="zumWarenkorb()">In den Warenkorb</button>
                 </div>
@@ -281,5 +278,35 @@
     <footer>
         <p>&copy; 2025 Musikshop. Alle Rechte vorbehalten.</p>
     </footer>
+    <script>
+        function zumWarenkorb() {
+            window.location.href = "warenkorb.php";
+        }
+
+        const amyImage = document.querySelector('img[src="bilder/AMY.png"]');
+const amyAudio = document.getElementById('amy-audio');
+
+if (amyImage && amyAudio) {
+    amyImage.addEventListener('click', () => {
+        if (!amyAudio.paused) {
+            amyAudio.pause();
+            amyAudio.currentTime = 0;
+            return;
+        }
+
+        amyAudio.currentTime = 0;
+        amyAudio.play();
+
+        setTimeout(() => {
+            amyAudio.pause();
+            amyAudio.currentTime = 0;
+        }, 10000); // 10 Sekunden
+    });
+}
+
+
+
+        
+    </script>
 </body>
 </html>
