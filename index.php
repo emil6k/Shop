@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -185,11 +186,11 @@
             display: none;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             font-size: 16px;
-            z-index: 1000;
+            z-index: 1200;
             transition: opacity 0.3s;
         }
         .notification.dark-mode {
-            background-color: #444;
+            background-color: #ff4500; /* Orange im Dark Mode */
         }
     </style>
 </head>
@@ -249,28 +250,28 @@
             <h2>CDs</h2>
             <div class="product-grid">
                 <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD 1">
+                    <img src="bilder/cdtransparent.png" alt="CD">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der CD.</p>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
                 <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD 2">
+                    <img src="bilder/cdtransparent.png" alt="CD">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der CD.</p>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
                 <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD 3">
+                    <img src="bilder/cdtransparent.png" alt="CD">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der CD.</p>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
                 <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD 4">
+                    <img src="bilder/cdtransparent.png" alt="CD">
                     <h3>Albumtitel - Künstler</h3>
                     <p>Beschreibung der CD.</p>
                     <div class="price">€14,99</div>
@@ -335,7 +336,7 @@
         }
         if (localStorage.getItem('dark-mode') === 'enabled') toggleDarkMode();
 
-        // Notification
+        // Notification anzeigen
         function showNotification() {
             const n = document.getElementById('notification');
             n.style.display = 'block';
@@ -348,18 +349,15 @@
             }, 3000);
         }
 
-        // Warenkorb-Funktionen
+        // Warenkorb-Funktion
         function zumWarenkorb(btn) {
             const prod = btn.closest('.product');
             const name = prod.querySelector('h3').innerText.trim();
             const price = parseFloat(prod.dataset.price);
             let cart = JSON.parse(localStorage.getItem('warenkorb')) || [];
             const idx = cart.findIndex(i => i.name === name);
-            if (idx >= 0) {
-                cart[idx].menge++;
-            } else {
-                cart.push({ name, price, menge: 1 });
-            }
+            if (idx >= 0) cart[idx].menge++;
+            else cart.push({ name, price, menge: 1 });
             localStorage.setItem('warenkorb', JSON.stringify(cart));
             showNotification();
         }

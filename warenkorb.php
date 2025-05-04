@@ -102,8 +102,9 @@
             color: #ff4500;
         }
         .notification.dark-mode {
-            background-color: #444;
+            background-color: #ff4500; /* Orange im Dark Mode */
         }
+
         .dark-mode-toggle {
             position: fixed;
             top: 20px;
@@ -120,6 +121,7 @@
         .dark-mode-toggle:hover {
             background-color: #555;
         }
+
         .notification {
             position: fixed;
             top: 20px;
@@ -131,7 +133,7 @@
             display: none;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             font-size: 16px;
-            z-index: 1000;
+            z-index: 1200;
             transition: opacity 0.3s;
         }
     </style>
@@ -148,9 +150,7 @@
                 <th>Aktion</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Gefüllt durch JS -->
-        </tbody>
+        <tbody></tbody>
         <tfoot>
             <tr>
                 <td colspan="2">Gesamt</td>
@@ -166,7 +166,7 @@
     </div>
 
     <div class="buttons">
-        <a href="index.html">Weiter einkaufen</a>
+        <a href="index.php">Weiter einkaufen</a>
         <button onclick="warenkorbLeeren()">Warenkorb leeren</button>
     </div>
 
@@ -174,7 +174,7 @@
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
 
     <script>
-        // Dark Mode
+        // Dark Mode Toggle
         function toggleDarkMode(){
             document.body.classList.toggle('dark-mode');
             document.querySelector('table').classList.toggle('dark-mode');
@@ -188,9 +188,9 @@
 
         // Warenkorb-Funktionen
         function warenkorbAnzeigen(){
-            const cart = JSON.parse(localStorage.getItem('warenkorb'))||[];
-            const tbody = document.querySelector('#warenkorbTabelle tbody');
-            const totalEl = document.getElementById('gesamtpreis');
+            const cart=JSON.parse(localStorage.getItem('warenkorb'))||[];
+            const tbody=document.querySelector('#warenkorbTabelle tbody');
+            const totalEl=document.getElementById('gesamtpreis');
             tbody.innerHTML='';
             let sum=0;
             cart.forEach((p,i)=>{
@@ -234,7 +234,13 @@
             const n=document.getElementById('notification');
             n.innerText=msg;
             n.style.display='block';
-            setTimeout(()=>{ n.style.opacity='0'; setTimeout(()=>{ n.style.display='none'; n.style.opacity='1'; },300); },2000);
+            setTimeout(()=>{
+                n.style.opacity='0';
+                setTimeout(()=>{
+                    n.style.display='none';
+                    n.style.opacity='1';
+                },300);
+            },2000);
         }
 
         document.addEventListener('DOMContentLoaded',warenkorbAnzeigen);
