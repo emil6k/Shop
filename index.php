@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -92,10 +91,7 @@
             font-size: 18px;
             margin: 10px 0;
             color: black !important;
-        }
-        .product p {
-            color: #666;
-            font-size: 14px;
+            line-height: 1.2;
         }
         .product .price {
             font-weight: bold;
@@ -190,7 +186,7 @@
             transition: opacity 0.3s;
         }
         .notification.dark-mode {
-            background-color: #ff4500; /* Orange im Dark Mode */
+            background-color: #ff4500;
         }
     </style>
 </head>
@@ -249,31 +245,27 @@
         <section id="cds">
             <h2>CDs</h2>
             <div class="product-grid">
-                <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
+                <div class="product" data-name="IGOR – Tyler, the Creator" data-price="14.99">
+                    <img src="bilder/igor.jpg" alt="IGOR">
+                    <h3>IGOR – Tyler, the Creator<br>&nbsp;</h3>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
-                <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
+                <div class="product" data-name="AT.LONG.LAST.A$AP – A$AP Rocky" data-price="14.99">
+                    <img src="bilder/atlonglastasap.jpg" alt="AT.LONG.LAST.A$AP">
+                    <h3>AT.LONG.LAST.A$AP – A$AP Rocky&nbsp;</h3>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
-                <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
+                <div class="product" data-name="Graduation – Kanye West" data-price="14.99">
+                    <img src="bilder/graduation.jpg" alt="Graduation">
+                    <h3>Graduation – Kanye West<br>&nbsp;</h3>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
-                <div class="product" data-name="Albumtitel - Künstler" data-price="14.99">
-                    <img src="bilder/cdtransparent.png" alt="CD">
-                    <h3>Albumtitel - Künstler</h3>
-                    <p>Beschreibung der CD.</p>
+                <div class="product" data-name="Mann beißt Hund OG – Keemo" data-price="14.99">
+                    <img src="bilder/mbh.jpg" alt="Mann beißt Hund OG">
+                    <h3>Mann beißt Hund OG – Keemo&nbsp;</h3>
                     <div class="price">€14,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
@@ -286,28 +278,24 @@
                 <div class="product" data-name="Flöte" data-price="199.99">
                     <img src="bilder/flötetransparent.png" alt="Flöte">
                     <h3>Flöte</h3>
-                    <p>Hochwertige Flöte für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
                 <div class="product" data-name="Geige" data-price="199.99">
                     <img src="bilder/—Pngtree—violin exquisite violin playing entertainment_6926571.png" alt="Geige">
                     <h3>Geige</h3>
-                    <p>Hochwertige Geige für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
                 <div class="product" data-name="Gitarre" data-price="199.99">
                     <img src="bilder/gitarretransparent.jpeg" alt="Gitarre">
                     <h3>Gitarre</h3>
-                    <p>Hochwertige Gitarre für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
                 <div class="product" data-name="Bass" data-price="199.99">
                     <img src="bilder/—Pngtree—beth_7204229.png" alt="Bass">
                     <h3>Bass</h3>
-                    <p>Hochwertiger Bass für Einsteiger und Profis.</p>
                     <div class="price">€199,99</div>
                     <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
                 </div>
