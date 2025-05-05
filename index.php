@@ -190,7 +190,17 @@
         }
     </style>
 </head>
+<audio id="amy-audio">
+    <source src="audio/amywinehouse.mp3" type="audio/mpeg">
+    Dein Browser unterstützt Audio leider nicht.
+</audio>
+
+
 <body>
+<audio id="igor">
+    <source src="audio/Tylor.mp3" type="audio/mpeg">
+    Dein Browser unterstützt Audio leider nicht.
+</audio>
     <header>
         <h1>RetroSounds</h1>
         <div class="Überschrift">
@@ -203,7 +213,6 @@
             <li><a href="#schallplatten">Schallplatten</a></li>
             <li><a href="#cds">CDs</a></li>
             <li><a href="#instrumente">Instrumente</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
             <li><a href="warenkorb.php">
                 <img src="bilder/shopping.png" alt="Warenkorb" style="width:20px;vertical-align:middle;margin-right:5px;">
                 Warenkorb
@@ -349,6 +358,47 @@
             localStorage.setItem('warenkorb', JSON.stringify(cart));
             showNotification();
         }
+        
+const igorImage = document.querySelector('img[src="bilder/igor.jpg"]');
+const igorAudio = document.getElementById('igor');
+
+if (igorImage && igorAudio) {
+    igorImage.addEventListener('click', () => {
+        if (!igorAudio.paused) {
+            igorAudio.pause();
+            igorAudio.currentTime = 0;
+            return;
+        }
+
+        igorAudio.currentTime = 0;
+        igorAudio.play();
+
+        setTimeout(() => {
+            igorAudio.pause();
+            igorAudio.currentTime = 0;
+        }, 10000); // 10 Sekunden
+    });
+}
+const amyImage = document.querySelector('img[src="bilder/AMY.png"]');
+const amyAudio = document.getElementById('amy-audio');
+
+if (amyImage && amyAudio) {
+    amyImage.addEventListener('click', () => {
+        if (!amyAudio.paused) {
+            amyAudio.pause();
+            amyAudio.currentTime = 0;
+            return;
+        }
+
+        amyAudio.currentTime = 0;
+        amyAudio.play();
+
+        setTimeout(() => {
+            amyAudio.pause();
+            amyAudio.currentTime = 0;
+        }, 10000); // 10 Sekunden
+    });
+}
     </script>
 </body>
 </html>
