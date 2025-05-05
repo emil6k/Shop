@@ -1,3 +1,26 @@
+<?php
+session_start();
+
+// 1) Produkt in den Warenkorb legen
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
+    $name  = $_POST['name'];
+    $price = floatval($_POST['price']);
+    $cart  = $_SESSION['cart'] ?? [];
+    if (isset($cart[$name])) {
+        $cart[$name]['qty']++;
+    } else {
+        $cart[$name] = ['price' => $price, 'qty' => 1];
+    }
+    $_SESSION['cart'] = $cart;
+    $message = 'Produkt wurde in den Warenkorb gelegt!';
+    header('Location: index.php?msg=' . urlencode($message));
+    exit;
+}
+
+// 2) Nachricht aus GET
+$message = $_GET['msg'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,19 +35,13 @@
             background-color: #f4f4f4;
             transition: background-color 0.3s, color 0.3s;
         }
-
-        /* Header */
         header {
             background-color: white;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        header.dark-mode {
-            background-color: #ff7043;
-        }
-
-        /* Navigation */
+        header.dark-mode { background-color: #ff7043; }
         nav {
             display: flex;
             justify-content: center;
@@ -36,38 +53,15 @@
             z-index: 1000;
             transition: background-color 0.3s;
         }
-        nav.dark-mode {
-            background-color: rgba(167,142,142,0.1);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 30px;
-        }
+        nav.dark-mode { background-color: rgba(167,142,142,0.1); }
+        nav ul { list-style: none; padding: 0; display: flex; gap: 30px; }
         nav ul li a {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 10px;
+            color: black; text-decoration: none; font-size: 18px; font-weight: bold; padding: 10px;
             transition: color 0.3s;
         }
-        nav.dark-mode ul li a {
-            color: white;
-        }
-        nav ul li a:hover {
-            color: #ff4500;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        /* Produkt-Gitter */
+        nav.dark-mode ul li a { color: white; }
+        nav ul li a:hover { color: #ff4500; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
@@ -83,21 +77,9 @@
             padding: 15px;
             transition: background-color 0.3s, color 0.3s;
         }
-        .product img {
-            width: 100%;
-            border-bottom: 2px solid #eee;
-        }
-        .product h3 {
-            font-size: 18px;
-            margin: 10px 0;
-            color: black !important;
-            line-height: 1.2;
-        }
-        .product .price {
-            font-weight: bold;
-            color: #ff4500;
-            font-size: 16px;
-        }
+        .product img { width: 100%; border-bottom: 2px solid #eee; cursor: pointer; }
+        .product h3 { font-size: 18px; margin: 10px 0; color: black !important; line-height: 1.2; }
+        .product .price { font-weight: bold; color: #ff4500; font-size: 16px; }
         .product button {
             background-color: rgb(3,50,105);
             color: white;
@@ -108,27 +90,11 @@
             margin-top: 10px;
             transition: background-color 0.3s;
         }
-        .product button:hover {
-            background-color: rgb(15,113,242);
-        }
-        .product.dark-mode {
-            background-color: white;
-            color: black;
-        }
-        .product.dark-mode h3 {
-            color: black !important;
-        }
-
-        /* Überschrift und Logo */
-        .Überschrift {
-            margin-right: 1400px;
-            margin-top: -100px;
-        }
-        #logopng {
-            width: 100px;
-        }
-
-        /* Footer */
+        .product button:hover { background-color: rgb(15,113,242); }
+        .product.dark-mode { background-color: white; color: black; }
+        .product.dark-mode h3 { color: black !important; }
+        .Überschrift { margin-right: 1400px; margin-top: -100px; }
+        #logopng { width: 100px; }
         footer {
             text-align: center;
             padding: 20px;
@@ -137,70 +103,32 @@
             box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
             transition: background-color 0.3s, color 0.3s;
         }
-        body.dark-mode footer {
-            background-color: #333;
-            color: white;
-        }
-
-        /* Dark Mode Body/Text */
-        body.dark-mode {
-            background-color: #121212;
-            color: white;
-        }
-        h1.dark-mode {
-            color: #ffffff;
-        }
-
-        /* Dark Mode Toggle Button */
+        body.dark-mode footer { background-color: #333; color: white; }
+        body.dark-mode { background-color: #121212; color: white; }
+        h1.dark-mode { color: #ffffff; }
         .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            z-index: 1100;
+            position: fixed; top: 20px; right: 20px;
+            background-color: #333; color: white;
+            padding: 10px 20px; border: none; border-radius: 5px;
+            cursor: pointer; font-size: 16px; z-index: 1100;
             transition: background-color 0.3s;
         }
-        .dark-mode-toggle:hover {
-            background-color: #555;
-        }
-
-        /* Notification */
+        .dark-mode-toggle:hover { background-color: #555; }
         .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            display: none;
+            position: fixed; top: 20px; right: 20px;
+            background-color: #4CAF50; color: white;
+            padding: 15px; border-radius: 5px; display: none;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            font-size: 16px;
-            z-index: 1200;
-            transition: opacity 0.3s;
+            font-size: 16px; z-index: 1200; transition: opacity 0.3s;
         }
-        .notification.dark-mode {
-            background-color: #ff4500;
-        }
+        .notification.dark-mode { background-color: #ff4500; }
     </style>
 </head>
-<audio id="amy-audio">
-    <source src="audio/amywinehouse.mp3" type="audio/mpeg">
-    Dein Browser unterstützt Audio leider nicht.
-</audio>
-
-
 <body>
-<audio id="igor">
-    <source src="audio/Tylor.mp3" type="audio/mpeg">
-    Dein Browser unterstützt Audio leider nicht.
-</audio>
+    <?php if ($message): ?>
+        <div class="notification" id="notification" style="display:block;"><?= htmlspecialchars($message) ?></div>
+    <?php endif; ?>
+
     <header>
         <h1>RetroSounds</h1>
         <div class="Überschrift">
@@ -213,10 +141,12 @@
             <li><a href="#schallplatten">Schallplatten</a></li>
             <li><a href="#cds">CDs</a></li>
             <li><a href="#instrumente">Instrumente</a></li>
-            <li><a href="warenkorb.php">
-                <img src="bilder/shopping.png" alt="Warenkorb" style="width:20px;vertical-align:middle;margin-right:5px;">
-                Warenkorb
-            </a></li>
+            <li>
+                <a href="warenkorb.php">
+                    <img src="bilder/shopping.png" alt="Warenkorb" style="width:20px;vertical-align:middle;margin-right:5px;">
+                    Warenkorb
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -224,90 +154,114 @@
         <section id="schallplatten">
             <h2>Schallplatten</h2>
             <div class="product-grid">
-                <div class="product" data-name="Amy Winehouse – Back to Black" data-price="29.99">
-                    <img src="bilder/AMY.png" alt="Amy Winehouse">
+                <form method="post" class="product">
+                    <img src="bilder/AMY.png" alt="Amy Winehouse" onclick="document.getElementById('amy-audio').play()">
                     <h3>Amy Winehouse – Back to Black</h3>
                     <div class="price">€29,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="blonde - Frank Ocean" data-price="19.99">
+                    <input type="hidden" name="name" value="Amy Winehouse – Back to Black">
+                    <input type="hidden" name="price" value="29.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/blondocean.png" alt="Frank Ocean">
-                    <h3>blonde - Frank Ocean<br>&nbsp;</h3>
+                    <h3>blonde – Frank Ocean</h3>
                     <div class="price">€19,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="My Beautiful Dark Twisted Fantasy - Kanye West" data-price="19.99">
+                    <input type="hidden" name="name" value="blonde – Frank Ocean">
+                    <input type="hidden" name="price" value="19.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/KayneWest.png" alt="Kanye West">
-                    <h3>My Beautiful Dark Twisted Fantasy - Kanye West</h3>
+                    <h3>My Beautiful Dark Twisted Fantasy – Kanye West</h3>
                     <div class="price">€19,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="The Dark Side of the Moon - Pink Floyd" data-price="19.99">
+                    <input type="hidden" name="name" value="My Beautiful Dark Twisted Fantasy – Kanye West">
+                    <input type="hidden" name="price" value="19.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/PinkFloydAlbum.png" alt="Pink Floyd">
-                    <h3>The Dark Side of the Moon - Pink Floyd</h3>
+                    <h3>The Dark Side of the Moon – Pink Floyd</h3>
                     <div class="price">€19,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
+                    <input type="hidden" name="name" value="The Dark Side of the Moon – Pink Floyd">
+                    <input type="hidden" name="price" value="19.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
             </div>
         </section>
 
         <section id="cds">
             <h2>CDs</h2>
             <div class="product-grid">
-                <div class="product" data-name="IGOR – Tyler, the Creator" data-price="14.99">
-                    <img src="bilder/igor.jpg" alt="IGOR">
-                    <h3>IGOR – Tyler, the Creator<br>&nbsp;</h3>
+                <form method="post" class="product">
+                    <img src="bilder/igor.jpg" alt="IGOR" onclick="document.getElementById('igor').play()">
+                    <h3>IGOR – Tyler, the Creator</h3>
                     <div class="price">€14,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="AT.LONG.LAST.A$AP – A$AP Rocky" data-price="14.99">
+                    <input type="hidden" name="name" value="IGOR – Tyler, the Creator">
+                    <input type="hidden" name="price" value="14.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/atlonglastasap.jpg" alt="AT.LONG.LAST.A$AP">
-                    <h3>AT.LONG.LAST.A$AP – A$AP Rocky&nbsp;</h3>
+                    <h3>AT.LONG.LAST.A$AP – A$AP Rocky</h3>
                     <div class="price">€14,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="Graduation – Kanye West" data-price="14.99">
+                    <input type="hidden" name="name" value="AT.LONG.LAST.A$AP – A$AP Rocky">
+                    <input type="hidden" name="price" value="14.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/graduation.jpg" alt="Graduation">
-                    <h3>Graduation – Kanye West<br>&nbsp;</h3>
+                    <h3>Graduation – Kanye West</h3>
                     <div class="price">€14,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="Mann beißt Hund OG – Keemo" data-price="14.99">
+                    <input type="hidden" name="name" value="Graduation – Kanye West">
+                    <input type="hidden" name="price" value="14.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/mbh.jpg" alt="Mann beißt Hund OG">
-                    <h3>Mann beißt Hund OG – Keemo&nbsp;</h3>
+                    <h3>Mann beißt Hund OG – Keemo</h3>
                     <div class="price">€14,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
+                    <input type="hidden" name="name" value="Mann beißt Hund OG – Keemo">
+                    <input type="hidden" name="price" value="14.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
             </div>
         </section>
 
         <section id="instrumente">
             <h2>Instrumente</h2>
             <div class="product-grid">
-                <div class="product" data-name="Flöte" data-price="199.99">
+                <form method="post" class="product">
                     <img src="bilder/flötetransparent.png" alt="Flöte">
                     <h3>Flöte</h3>
                     <div class="price">€199,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="Geige" data-price="199.99">
+                    <input type="hidden" name="name" value="Flöte">
+                    <input type="hidden" name="price" value="199.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/—Pngtree—violin exquisite violin playing entertainment_6926571.png" alt="Geige">
                     <h3>Geige</h3>
                     <div class="price">€199,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="Gitarre" data-price="199.99">
+                    <input type="hidden" name="name" value="Geige">
+                    <input type="hidden" name="price" value="199.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/gitarretransparent.jpeg" alt="Gitarre">
                     <h3>Gitarre</h3>
                     <div class="price">€199,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
-                <div class="product" data-name="Bass" data-price="199.99">
+                    <input type="hidden" name="name" value="Gitarre">
+                    <input type="hidden" name="price" value="199.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
+                <form method="post" class="product">
                     <img src="bilder/—Pngtree—beth_7204229.png" alt="Bass">
                     <h3>Bass</h3>
                     <div class="price">€199,99</div>
-                    <button onclick="zumWarenkorb(this)">In den Warenkorb</button>
-                </div>
+                    <input type="hidden" name="name" value="Bass">
+                    <input type="hidden" name="price" value="199.99">
+                    <button type="submit" name="add">In den Warenkorb</button>
+                </form>
             </div>
         </section>
     </div>
@@ -316,8 +270,17 @@
         <p>&copy; 2025 Emil & Domi. Alle Rechte vorbehalten.</p>
     </footer>
 
-    <div class="notification" id="notification">Produkt wurde in den Warenkorb gelegt!</div>
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+
+    <!-- Audio-Elemente -->
+    <audio id="igor">
+        <source src="audio/Tylor.mp3" type="audio/mpeg">
+        Dein Browser unterstützt Audio leider nicht.
+    </audio>
+    <audio id="amy-audio">
+        <source src="audio/amywinehouse.mp3" type="audio/mpeg">
+        Dein Browser unterstützt Audio leider nicht.
+    </audio>
 
     <script>
         // Dark Mode Toggle
@@ -328,77 +291,10 @@
             document.querySelectorAll('.product').forEach(p => p.classList.toggle('dark-mode'));
             document.querySelector('footer').classList.toggle('dark-mode');
             document.querySelector('h1').classList.toggle('dark-mode');
-            document.getElementById('notification').classList.toggle('dark-mode');
+            document.querySelectorAll('.notification').forEach(n => n.classList.toggle('dark-mode'));
             localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
         }
         if (localStorage.getItem('dark-mode') === 'enabled') toggleDarkMode();
-
-        // Notification anzeigen
-        function showNotification() {
-            const n = document.getElementById('notification');
-            n.style.display = 'block';
-            setTimeout(() => {
-                n.style.opacity = '0';
-                setTimeout(() => {
-                    n.style.display = 'none';
-                    n.style.opacity = '1';
-                }, 300);
-            }, 3000);
-        }
-
-        // Warenkorb-Funktion
-        function zumWarenkorb(btn) {
-            const prod = btn.closest('.product');
-            const name = prod.querySelector('h3').innerText.trim();
-            const price = parseFloat(prod.dataset.price);
-            let cart = JSON.parse(localStorage.getItem('warenkorb')) || [];
-            const idx = cart.findIndex(i => i.name === name);
-            if (idx >= 0) cart[idx].menge++;
-            else cart.push({ name, price, menge: 1 });
-            localStorage.setItem('warenkorb', JSON.stringify(cart));
-            showNotification();
-        }
-        
-const igorImage = document.querySelector('img[src="bilder/igor.jpg"]');
-const igorAudio = document.getElementById('igor');
-
-if (igorImage && igorAudio) {
-    igorImage.addEventListener('click', () => {
-        if (!igorAudio.paused) {
-            igorAudio.pause();
-            igorAudio.currentTime = 0;
-            return;
-        }
-
-        igorAudio.currentTime = 0;
-        igorAudio.play();
-
-        setTimeout(() => {
-            igorAudio.pause();
-            igorAudio.currentTime = 0;
-        }, 10000); // 10 Sekunden
-    });
-}
-const amyImage = document.querySelector('img[src="bilder/AMY.png"]');
-const amyAudio = document.getElementById('amy-audio');
-
-if (amyImage && amyAudio) {
-    amyImage.addEventListener('click', () => {
-        if (!amyAudio.paused) {
-            amyAudio.pause();
-            amyAudio.currentTime = 0;
-            return;
-        }
-
-        amyAudio.currentTime = 0;
-        amyAudio.play();
-
-        setTimeout(() => {
-            amyAudio.pause();
-            amyAudio.currentTime = 0;
-        }, 10000); // 10 Sekunden
-    });
-}
     </script>
 </body>
 </html>
